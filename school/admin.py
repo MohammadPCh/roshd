@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('nid', 'first_name', 'last_name',)
 
 
 @admin.register(ClassRoom)
