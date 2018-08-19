@@ -7,3 +7,7 @@ from .models import *
 class StudentAdmin(admin.ModelAdmin):
     pass
 
+
+@admin.register(ClassRoom)
+class ClassRoomAdmin(admin.ModelAdmin):
+    pass
