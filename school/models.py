@@ -22,7 +22,7 @@ class Semester(models.Model):
 
 class Student(models.Model):
     # TODO add validators
-    nid = models.CharField(max_length=10, default='')
+    nid = models.CharField(max_length=10, default='', unique=True)
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, null=True)
     father_name = models.CharField(max_length=20)
