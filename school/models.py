@@ -71,3 +71,6 @@ class Mark(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     mark = models.FloatField(max_length=2, validators=[MinValueValidator(0), MaxValueValidator(20)], default=0)
+
+    def __str__(self):
+        return '{0} | {1} | {2} '.format(self.course, self.semester, self.mark)
