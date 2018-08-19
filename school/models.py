@@ -44,6 +44,9 @@ class ClassRoom(models.Model):
     courses = models.ManyToManyField(Course, related_name='classes', through='OfferedCourse')
     students = models.ManyToManyField(Student, through='ClassRoomEnrollment')
 
+    def __str__(self):
+        return self.class_name
+
 
 class OfferedCourse(models.Model):
     classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
