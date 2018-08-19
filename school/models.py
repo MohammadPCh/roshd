@@ -35,6 +35,9 @@ class Student(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
+
 
 class ClassRoom(models.Model):
     class_name = models.CharField(max_length=20)
