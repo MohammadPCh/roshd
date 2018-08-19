@@ -30,7 +30,7 @@ class ClassRoomEnrollAdmin(admin.ModelAdmin):
 
 @admin.register(Semester)
 class SemesterAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('year', 'semester',)
 
 
 @admin.register(Mark)
