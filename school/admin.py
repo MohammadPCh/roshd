@@ -21,3 +21,8 @@ class CourseAdmin(admin.ModelAdmin):
 @admin.register(OfferedCourse)
 class OfferedCourseAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(ClassRoomEnrollment)
+class ClassRoomEnrollAdmin(admin.ModelAdmin):
+    pass
