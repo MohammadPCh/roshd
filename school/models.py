@@ -16,6 +16,9 @@ class Semester(models.Model):
     semester = models.CharField(choices=SEMESTER_CHOICES, max_length=1, default=0)
     year = models.CharField(max_length=4, default=datetime.now().year)
 
+    def __str__(self):
+        return '{0} {1}'.format(self.year, self.semester)
+
 
 class Student(models.Model):
     # TODO add validators
