@@ -19,3 +19,8 @@ class Student(models.Model):
     last_name = models.CharField(max_length=20, null=True)
     father_name = models.CharField(max_length=20)
     address = models.TextField(max_length=100, null=True, blank=True)
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=20)
+
