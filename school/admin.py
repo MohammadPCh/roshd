@@ -35,4 +35,4 @@ class SemesterAdmin(admin.ModelAdmin):
 
 @admin.register(Mark)
 class MarkAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('student', 'course', 'semester', 'mark')
