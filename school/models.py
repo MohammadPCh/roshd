@@ -53,6 +53,9 @@ class OfferedCourse(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.DO_NOTHING, default=1)
 
+    def __str__(self):
+        return '{0} | {1} | {2}'.format(self.semester, self.classroom, self.course)
+
 
 class ClassRoomEnrollment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students')
