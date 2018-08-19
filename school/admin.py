@@ -20,7 +20,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(OfferedCourse)
 class OfferedCourseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('classroom', 'course', 'semester',)
 
 
 @admin.register(ClassRoomEnrollment)
