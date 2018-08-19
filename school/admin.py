@@ -31,3 +31,8 @@ class ClassRoomEnrollAdmin(admin.ModelAdmin):
 @admin.register(Semester)
 class SemesterAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Mark)
+class MarkAdmin(admin.ModelAdmin):
+    pass
