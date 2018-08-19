@@ -62,6 +62,9 @@ class ClassRoomEnrollment(models.Model):
     classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='classrooms')
     semester = models.ForeignKey(Semester, on_delete=models.DO_NOTHING, default=1)
 
+    def __str__(self):
+        return '{0} | {1} | {2}'.format(self.semester, self.classroom, self.student)
+
 
 class Mark(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
