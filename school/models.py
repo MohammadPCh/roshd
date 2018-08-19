@@ -24,3 +24,21 @@ class Student(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=20)
 
+
+class ClassRoom(models.Model):
+    class_name = models.CharField(max_length=20)
+    courses = models.ManyToManyField(Course, related_name='classes', through='OfferedCourse')
+    students = models.ManyToManyField(Student, through='ClassRoomEnrollment')
+
+
+class OfferedCourse(models.Model):
+    classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    semester = models.ForeignKey(Semester, on_delete=models.DO_NOTHING, default=1)
+
+
+class ClassRoomEnrollment(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students')
+    classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='classrooms')
+    semester = models.ForeignKey(Semester, on_delete=models.DO_NOTHING, default=1)
+
