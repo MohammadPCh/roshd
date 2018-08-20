@@ -65,6 +65,9 @@ class ClassRoomEnrollment(models.Model):
     def __str__(self):
         return '{0} | {1} | {2}'.format(self.semester, self.classroom, self.student)
 
+    class Meta:
+        unique_together = (("student", "classroom", "semester"),)
+
 
 class Mark(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
