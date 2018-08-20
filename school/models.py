@@ -74,3 +74,7 @@ class Mark(models.Model):
 
     def __str__(self):
         return '{0} | {1} | {2} '.format(self.course, self.semester, self.mark)
+
+    class Meta:
+        unique_together = (("student", "course", "semester"),)
+
