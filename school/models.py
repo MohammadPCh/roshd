@@ -56,6 +56,9 @@ class OfferedCourse(models.Model):
     def __str__(self):
         return '{0} | {1} | {2}'.format(self.semester, self.classroom, self.course)
 
+    class Meta:
+        unique_together = (("classroom", "course", "semester"),)
+
 
 class ClassRoomEnrollment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students')
