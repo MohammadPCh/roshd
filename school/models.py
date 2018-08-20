@@ -19,6 +19,9 @@ class Semester(models.Model):
     def __str__(self):
         return '{0} {1}'.format(self.year, self.semester)
 
+    class Meta:
+        unique_together = (("semester", "year"),)
+
 
 class Student(models.Model):
     # TODO add validators
