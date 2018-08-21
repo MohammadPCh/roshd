@@ -6,10 +6,11 @@ class MarkSerializer(serializers.ModelSerializer):
     student = serializers.StringRelatedField()
     course = serializers.StringRelatedField()
     semester = serializers.StringRelatedField()
+    classroom = serializers.StringRelatedField()
 
     class Meta:
         model = Mark
-        fields = '__all__'
+        fields = ["student", "course", "semester", "mark", "classroom", ]
 
 
 class StudentSerializer(serializers.ModelSerializer):
