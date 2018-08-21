@@ -29,14 +29,18 @@ class CourseAverageAPI(APIView):
 
     def get(self, request, name, year):
         offers = OfferedCourse.objects.filter(course__name=name)
+        result = []
         for offer in offers:
-            print(Mark.objects.filter(course__offeredcourse=offer)
-                  .filter(semester=offer.semester)
-                  .filter(classroom=offer.classroom))
+            detail = dict()
+            classroom = offer.classroom
+            semester = offer.semester
             avg = Mark.objects.filter(course__offeredcourse=offer)\
-                .filter(semester=offer.semester)\
-                .filter(classroom=offer.classroom)\
+                .filter(semester=semester)\
+                .filter(classroom=classroom)\
                 .aggregate(Avg('mark'))
-            print(avg)
+            detail['Classroom'] = str(classroom)
+            detail['Semester'] = str(semester)
+            detail['Average'] = avg['mark__avg']
+            result.append(detail)
 
-        return Response("Working!", status=status.HTTP_200_OK)
+        return Response(result, status=status.HTTP_200_OK)
