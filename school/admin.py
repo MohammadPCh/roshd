@@ -35,4 +35,5 @@ class SemesterAdmin(admin.ModelAdmin):
 
 @admin.register(Mark)
 class MarkAdmin(admin.ModelAdmin):
-    list_display = ('student', 'course', 'semester', 'mark')
+    list_display = ('student', 'course', "classroom", 'semester', 'mark')
+    exclude = ["classroom"]
