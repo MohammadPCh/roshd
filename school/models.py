@@ -72,18 +72,23 @@ class ClassRoomEnrollment(models.Model):
         return '{0} | {1} | {2}'.format(self.semester, self.classroom, self.student)
 
     class Meta:
-        unique_together = (("student", "classroom", "semester"),)
+        unique_together = (("student", "semester"),)
 
 
 class Mark(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
     mark = models.FloatField(max_length=2, validators=[MinValueValidator(0), MaxValueValidator(20)], default=0)
 
     def __str__(self):
-        return '{0} | {1} | {2} '.format(self.course, self.semester, self.mark)
+        return '{0} | {1} | {2} | {3}'.format(self.course, self.semester, self.mark, self.student)
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.classroom = ClassRoomEnrollment.objects.get(semester=self.semester, student=self.student).classroom
+        super(Mark, self).save()
 
     class Meta:
         unique_together = (("student", "course", "semester"),)
-
